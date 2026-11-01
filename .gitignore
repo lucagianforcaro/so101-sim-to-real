@@ -1,0 +1,19 @@
+# Third-party code: downloaded separately (see README)
+lerobot/
+third_party/
+
+# Installers
+*.sh
+
+# Intermediate plots (the curated ones are in lemniscate/figures/)
+lemniscate/outputs/*.png
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
