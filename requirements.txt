@@ -1,0 +1,10 @@
+# Python packages used by this project on top of LeRobot.
+# LeRobot itself is installed from source (see README: pip install -e "lerobot[...]"),
+# which also brings numpy, torch and the Feetech motor drivers.
+# Versions are the ones the project was developed and tested with.
+
+mujoco==3.5.0        # SO-101 model: kinematics, simulation, viewer
+matplotlib==3.11.2   # figures (lemniscate/, analysis)
+
+# Development
+ruff==0.17.4         # linter and formatter (settings in ruff.toml)

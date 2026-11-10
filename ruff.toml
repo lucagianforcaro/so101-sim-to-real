@@ -1,0 +1,13 @@
+# Ruff (linter and formatter) settings, aligned with LeRobot's own configuration.
+# Usage: `ruff check .` (problems), `ruff format .` (uniform style).
+target-version = "py312"
+line-length = 110
+extend-exclude = ["lerobot", "third_party"]  # third-party code, not ours
+
+[lint]
+# Same rule families as LeRobot, without T20 (our scripts talk to the user with
+# print) and D (docstring style; LeRobot does not enforce it on scripts either).
+select = ["E", "W", "F", "I", "B", "C4", "N", "UP", "SIM"]
+ignore = [
+    "E501", # line too long: handled by the formatter
+]
