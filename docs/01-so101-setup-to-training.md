@@ -9,20 +9,21 @@ commands I actually run, plus notes on what happened.
 
 | | |
 |---|---|
-| **Robot** | SO-101 follower arm + SO-101 leader arm (Feetech STS3215 servos) |
-| **Camera(s)** | USB webcam, _model TBD_ |
+| **Robot** | SO-101 follower arm (Feetech STS3215 servos); no leader arm yet |
+| **Teleoperation** | USB gamepad instead of a leader arm, see [joystick/README.md](../joystick/README.md) |
+| **Camera(s)** | USB webcam on a tripod, _being set up_ |
 | **Software** | LeRobot `0.6.2` (from source), Python 3.12 |
 | **Host** | Windows 11 + WSL2 (Ubuntu), kernel `6.18` |
 | **First policy** | ACT (Action Chunking with Transformers) |
 
 ## Progress
 
-- [ ] 0. Environment setup
-- [ ] 1. Connect the arms to WSL2
-- [ ] 2. Find the USB ports
-- [ ] 3. Set motor IDs and baudrate
-- [ ] 4. Calibrate the arms
-- [ ] 5. Teleoperate (no camera)
+- [x] 0. Environment setup
+- [x] 1. Connect the arms to WSL2
+- [x] 2. Find the USB ports
+- [x] 3. Set motor IDs and baudrate
+- [x] 4. Calibrate the arms (follower)
+- [x] 5. Teleoperate (no camera): with the gamepad, see [joystick/README.md](../joystick/README.md)
 - [ ] 6. Set up the camera
 - [ ] 7. Teleoperate with the camera
 - [ ] 8. Record a dataset
