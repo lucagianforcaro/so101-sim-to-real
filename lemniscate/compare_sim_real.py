@@ -135,7 +135,9 @@ def main() -> None:
     ax_err.set_ylabel("distance from desired [mm]")
     ax_err.set_ylim(bottom=0)
     ax_err.set_title(
-        f"Tracking error (mean: sim {err_sim.mean():.2f} mm, real {err_real.mean():.1f} mm)", loc="left", fontsize=11
+        f"Tracking error (mean: sim {err_sim.mean():.2f} mm, real {err_real.mean():.1f} mm)",
+        loc="left",
+        fontsize=11,
     )
     ax_err.legend(frameon=False, labelcolor=TEXT_2, fontsize=9, loc="upper left")
 
@@ -152,7 +154,10 @@ def main() -> None:
 
     fig.suptitle(
         f"SO-101 lemniscate: simulation vs real robot   ({period:.0f} s per loop, {settings})",
-        x=0.07, ha="left", fontsize=13, color=TEXT,
+        x=0.07,
+        ha="left",
+        fontsize=13,
+        color=TEXT,
     )
     out = run_path.with_name(run_path.stem.replace("real_run", "compare") + ".png")
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=SURFACE)

@@ -97,7 +97,9 @@ def main() -> None:
                 time.sleep(max(0.0, 1 / FPS - (time.perf_counter() - t0)))
 
         tracking = np.linalg.norm(np.array(trail[-n_points:]) - path, axis=1)
-        print(f"Tracking error last loop: mean {tracking.mean() * 1000:.1f} mm, max {tracking.max() * 1000:.1f} mm")
+        print(
+            f"Tracking error last loop: mean {tracking.mean() * 1000:.1f} mm, max {tracking.max() * 1000:.1f} mm"
+        )
         while viewer.is_running():
             time.sleep(0.1)
 

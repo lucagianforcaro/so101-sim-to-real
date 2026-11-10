@@ -40,7 +40,9 @@ def read_dead_zones(bus: SerialMotorsBus) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", default="/dev/ttyACM0")
-    parser.add_argument("--value", type=int, choices=range(0, 6), help="new dead zone in ticks (omit to only read)")
+    parser.add_argument(
+        "--value", type=int, choices=range(0, 6), help="new dead zone in ticks (omit to only read)"
+    )
     parser.add_argument("--motors", nargs="+", default=list(MOTORS), choices=list(MOTORS))
     args = parser.parse_args()
 

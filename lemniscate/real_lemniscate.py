@@ -85,7 +85,10 @@ def main() -> None:
     parser.add_argument("--loops", type=int, default=3)
     parser.add_argument("--max-step", type=float, default=5.0, help="max degrees per command (safety)")
     parser.add_argument(
-        "--p-gain", type=int, default=16, help="servo position P gain (LeRobot default 16, Feetech default 32)"
+        "--p-gain",
+        type=int,
+        default=16,
+        help="servo position P gain (LeRobot default 16, Feetech default 32)",
     )
     parser.add_argument(
         "--i-gain", type=int, default=0, help="servo position I gain (LeRobot default 0 = P-only control)"
@@ -161,7 +164,19 @@ def main() -> None:
         OUTPUTS.mkdir(exist_ok=True)
         out = OUTPUTS / f"real_run_{datetime.now():%Y%m%d_%H%M%S}.npz"
         t, cmd, meas = np.array(log_t), np.array(log_cmd), np.array(log_meas)
-        np.savez(out, t=t, cmd_deg=cmd, meas_deg=meas, joints=ARM_JOINTS, period=args.period, fps=args.fps, p_gain=args.p_gain, i_gain=args.i_gain, d_gain=args.d_gain, acceleration=args.acceleration)
+        np.savez(
+            out,
+            t=t,
+            cmd_deg=cmd,
+            meas_deg=meas,
+            joints=ARM_JOINTS,
+            period=args.period,
+            fps=args.fps,
+            p_gain=args.p_gain,
+            i_gain=args.i_gain,
+            d_gain=args.d_gain,
+            acceleration=args.acceleration,
+        )
         err = np.abs(cmd - meas)
         print(f"Saved {out}")
         print(f"Achieved rate: {len(t) / t[-1]:.1f} Hz")

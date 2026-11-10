@@ -40,8 +40,12 @@ def main() -> None:
             if scn.ngeom >= scn.maxgeom:
                 break
             mujoco.mjv_initGeom(
-                scn.geoms[scn.ngeom], mujoco.mjtGeom.mjGEOM_SPHERE, np.full(3, 0.0025),
-                p, np.eye(3).flatten(), PATH_RGBA,
+                scn.geoms[scn.ngeom],
+                mujoco.mjtGeom.mjGEOM_SPHERE,
+                np.full(3, 0.0025),
+                p,
+                np.eye(3).flatten(),
+                PATH_RGBA,
             )
             scn.ngeom += 1
         image = renderer.render()

@@ -31,9 +31,7 @@ def lemniscate(t: np.ndarray, a: float) -> tuple[np.ndarray, np.ndarray]:
     return y, z
 
 
-def build_path(
-    n_points: int, width: float = 0.08, x: float = 0.25, z_center: float = 0.18
-) -> np.ndarray:
+def build_path(n_points: int, width: float = 0.08, x: float = 0.25, z_center: float = 0.18) -> np.ndarray:
     """End-effector positions (n_points, 3) along a lemniscate in a vertical plane.
 
     The robot faces +x: the figure lies in the y-z plane, `x` metres in front
@@ -79,9 +77,9 @@ def ik_position(
         err = target_pos - data.site(EE_SITE).xpos
         mujoco.mj_comPos(model, data)
         mujoco.mj_jacSite(model, data, jacp, None, model.site(EE_SITE).id)
-        J = jacp[:, IK_JOINTS]
+        J = jacp[:, IK_JOINTS]  # noqa: N806 (math name)
         # Damped pseudo-inverse: J+ = J^T (J J^T + lambda I)^-1
-        J_pinv = J.T @ np.linalg.inv(J @ J.T + damping * np.eye(3))
+        J_pinv = J.T @ np.linalg.inv(J @ J.T + damping * np.eye(3))  # noqa: N806 (math name)
         dq = J_pinv @ err
         # Null-space term: (I - J+ J) only keeps joint motions that do not move
         # the end effector, and uses them to get closer to q_ref.
@@ -99,7 +97,9 @@ def ik_position(
     return q, float(np.linalg.norm(err))
 
 
-def solve_trajectory(model: mujoco.MjModel, path: np.ndarray, q_start: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+def solve_trajectory(
+    model: mujoco.MjModel, path: np.ndarray, q_start: np.ndarray
+) -> tuple[np.ndarray, np.ndarray]:
     """IK for every point of `path`, warm-started from the previous solution.
 
     Returns joint positions (n_points, 6) in radians and the IK errors (n_points,).

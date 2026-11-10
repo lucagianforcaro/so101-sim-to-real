@@ -90,7 +90,10 @@ def main() -> None:
     axes[0].set_yticks(y, labels)
     fig.suptitle(
         "SO-101 lemniscate on the real robot: every tuning experiment (simulation: 0.15 mm)",
-        x=0.02, ha="left", fontsize=13, color=TEXT,
+        x=0.02,
+        ha="left",
+        fontsize=13,
+        color=TEXT,
     )
     fig.tight_layout()
     FIGURES.mkdir(exist_ok=True)

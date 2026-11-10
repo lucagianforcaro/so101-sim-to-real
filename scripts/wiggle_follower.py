@@ -74,7 +74,9 @@ def main() -> None:
                 # One full sine period: 0 -> +amplitude -> 0 -> -amplitude -> 0.
                 offset = args.amplitude * math.sin(2 * math.pi * i / steps)
                 # The gripper is in 0-100: keep it within range.
-                action[key] = min(100.0, max(0.0, home[key] + offset)) if joint == "gripper" else home[key] + offset
+                action[key] = (
+                    min(100.0, max(0.0, home[key] + offset)) if joint == "gripper" else home[key] + offset
+                )
                 # Send the six goal positions in a single bus message.
                 robot.send_action(action)
                 time.sleep(1 / FPS)
