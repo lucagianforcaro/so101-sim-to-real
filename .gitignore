@@ -8,6 +8,11 @@ third_party/
 # Intermediate plots (the curated ones are in lemniscate/figures/)
 lemniscate/outputs/*.png
 
+# Calibrations of a specific setup: generate your own with
+# joystick/calibrate_table.py and joystick/teach_ready_pose.py
+joystick/table.json
+joystick/ready.json
+
 # Python
 __pycache__/
 *.pyc
